@@ -23,4 +23,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cfg.vm.provision "shell", inline: $ubuntu_provscript
     cfg.vm.network "forwarded_port", guest: 8080, host: 18080
   end
+  config.vm.define :docker do |cfg|
+    cfg.vm.box = "sennerholm/boot2docker"
+    cfg.vm.synced_folder ".", "/vagrant"
+    cfg.vm.network "forwarded_port", guest: 8080, host: 28080
+  end
 end
