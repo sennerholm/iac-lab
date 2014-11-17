@@ -12,7 +12,7 @@ apt-get update
 apt-get -y upgrade
 apt-get install -y wget curl git maven
 mkdir -p /root/.m2
-echo "Hello world" >  /root/.m2/settings.xml 
+cp /vagrant/files/m2settings.xml /root/.m2/settings.xml 
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
