@@ -26,6 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :docker do |cfg|
     cfg.vm.box = "sennerholm/boot2docker"
     cfg.vm.synced_folder ".", "/vagrant"
+    cfg.vm.provider "virtualbox" do |v|
+        v.customize ["modifyvm", :id, "--memory", "700"]
+    end
     cfg.vm.network "forwarded_port", guest: 8080, host: 28080
   end
 end
