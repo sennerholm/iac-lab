@@ -24,11 +24,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cfg.vm.network "forwarded_port", guest: 8080, host: 18080
   end
   config.vm.define :docker do |cfg|
-    cfg.vm.box = "sennerholm/boot2docker"
+    cfg.vm.box = "sennerholm/boot2docker1_6"
+    cfg.vm.box_url = "https://dl.dropboxusercontent.com/u/6816236/boot2docker_virtualbox1.6.0.box"
     cfg.vm.synced_folder ".", "/vagrant"
     cfg.vm.provider "virtualbox" do |v|
         v.customize ["modifyvm", :id, "--memory", "700"]
     end
-    cfg.vm.network "forwarded_port", guest: 8080, host: 28080
+    cfg.vm.network "forwarded_port", guest: 8080, host: 18082
   end
 end
